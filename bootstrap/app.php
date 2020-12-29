@@ -80,6 +80,10 @@ $app->configure('app');
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
 
+$app->routeMiddleware([
+    'line'  => \App\Http\Middleware\LineMiddleware::class
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers

@@ -16,3 +16,7 @@
 $router->get('/', function () {
    return 'api';
 });
+
+$router->group(['middleware' => 'line'], function() use ($router) {
+    $router->post('/line', \App\Http\Controllers\LineWebhookController::class);
+});
