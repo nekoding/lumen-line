@@ -17,7 +17,7 @@ class LineMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $httpRequestBody = json_encode($request->all());
+        $httpRequestBody = $request->getContent();
         $channelSecret = env('LINE_BOT_CHANNEL_SECRET');
 
         $hash = hash_hmac('sha256', $httpRequestBody, $channelSecret, true);
