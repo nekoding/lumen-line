@@ -1,24 +1,47 @@
-# Lumen PHP Framework
+## Dev.to Line bot
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+Repository untuk backend line bot.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Fitur
 
-## Official Documentation
+- [x] Mengambil list artikel dari dev.to
+- [x] Mengambil list podcasts dari dev.to
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+## List command 
 
-## Contributing
+```
+articles :page: = Mengambil list artikel (default halaman = 0)
+podcasts :page: = Mengambil list podcast (default halaman = 0) 
+help            = Menampilkan pesan bantuan
+```
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Penggunaan
+1. Silahkan tambahkan akun dari bot ini sebagai teman : [@873pbazo](https://lin.ee/bGXyJad) atau bisa juga dengan scan QR code dibawah  
+![https://qr-official.line.me/sid/L/873pbazo.png](https://qr-official.line.me/sid/L/873pbazo.png)
 
-## Security Vulnerabilities
+2. Jika sudah silahkan kirimkan pesan sesuai command yang tersedia.   
+contoh : 
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+```
+articles 1
+```
 
-## License
+Maka bot akan mengambil list artikel halaman 1 dari api milik dev.to. Jika halaman tidak diinputkan maka secara otomatis bot akan mengambil dari halaman 0 / pertama.
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Dibuat dengan
+- [x] Lumen
+- [x] Line PHP SDK
+
+## Screenshoot
+
+- Pesan yang ditampilkan ketika bot pertama kali ditambahkan sebagai teman & tampilan pesan help
+![screenshoot/1.png](screenshoot/1.png)
+
+- Tampilan ketika menjalankan perintah articles
+![screenshoot/2.png](screenshoot/2.png)
+
+- Tampilan ketika menjalankan perintah podcasts
+![screenshoot/3.png](screenshoot/3.png)
+
+- Tampilan ketik perintah yang diinputkan tidak tersedia di dalam list
+![screenshoot/4.png](screenshoot/4.png)
