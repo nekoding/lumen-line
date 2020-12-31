@@ -32,47 +32,16 @@ use LINE\LINEBot\MessageBuilder\Flex\ComponentBuilder\SpanComponentBuilder;
 use LINE\LINEBot\MessageBuilder\Flex\ContainerBuilder\BubbleContainerBuilder;
 
 
-class FlexMessageHelper
+abstract class FlexMessageHelper
 {
 
     protected static $data;
 
-    public static function setMessage(object $data)
-    {
-        self::$data = $data;
-        return new self;
-    }
+    abstract static function setMessage($data);
+    abstract public function get();
 
-    /**
-     * Create card
-     *
-     * @return \LINE\LINEBot\MessageBuilder\FlexMessageBuilder
-     */
-    public function get()
-    {
 
-        $articles = array();
-
-        foreach (self::$data->result as $key => $value) {
-           $articles[] = BubbleContainerBuilder::builder()->setBody(
-               self::createBodyBlock(
-                   $value->main_image,
-                   $value->title,
-                   $value->user->name,
-                   $value->path
-               )
-           );
-        }
-
-        return FlexMessageBuilder::builder()
-            ->setAltText('Articles')
-            ->setContents(
-              CarouselContainerBuilder::builder()
-                  ->setContents($articles)
-            );
-    }
-
-    private static function createBodyBlock($img, $title, $author, $link)
+    protected static function createBodyBlock($img, $title, $author, $link, $btnText = 'Read Article')
     {
         $image = ImageComponentBuilder::builder()
                 ->setUrl($img ?? 'https://d2fltix0v2e0sb.cloudfront.net/dev-black.png')
@@ -115,7 +84,7 @@ class FlexMessageHelper
                                     [
                                         FillerComponentBuilder::builder(),
                                         TextComponentBuilder::builder()
-                                            ->setText('Read Article')
+                                            ->setText($btnText)
                                             ->setColor('#ffffff')
                                             ->setFlex(0)
                                             ->setOffsetTop('-2px'),
