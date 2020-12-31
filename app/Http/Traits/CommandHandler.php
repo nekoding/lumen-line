@@ -34,6 +34,11 @@ trait CommandHandler
     {
         $page = $params ?? $this->defaultPage;
 
-        return $page;
+        $response = Api::get("https://dev.to/api/podcast_episodes?per_page=5&page=$page");
+
+        return array(
+            'status'    => true,
+            'data'      => json_decode($response)
+        );
     }
 }
