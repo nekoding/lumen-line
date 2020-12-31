@@ -3,10 +3,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\FlexMessageHelper as FlexMessage;
+use App\Helpers\DevtoArticlesHelper as Articles;
+use App\Helpers\DevtoPodcastsHelper as Podcasts;
 use App\Http\Traits\CommandHandler;
 use Illuminate\Http\Request;
 use App\Helpers\LineMessageResponseHelper as Line;
+use Illuminate\Http\Response;
 
 class LineWebhookController extends Controller
 {
@@ -16,7 +18,8 @@ class LineWebhookController extends Controller
     {
         $data = self::lineParse($request);
         $args = explode(' ', $data->message['text']);
-        $command =  str_replace('/', '', $args[0]);
+        $command =  preg_replace('/[^\da-z]/i', '', $args[0]);
+
         $responseApi = $this->apply($command, $args[1] ?? null);
 
         if (!$responseApi['status']) {
@@ -27,7 +30,18 @@ class LineWebhookController extends Controller
             }
         }
 
-        $message = FlexMessage::setMessage($responseApi['data'])->get();
+        switch ($command) {
+            case 'articles':
+                $message = Articles::setMessage($responseApi['data'])->get();
+                break;
+            case 'podcasts':
+                $message = Podcasts::setMessage($responseApi['data'])->get();
+                break;
+            default:
+                abort(Response::HTTP_BAD_REQUEST);
+                break;
+        }
+
         $bot = (new Line())->bot->replyMessage($data->replyToken, $message);
 
         if ($bot->isSucceeded()) {
