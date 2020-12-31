@@ -16,7 +16,13 @@ use Illuminate\Support\Str;
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    $response = array(
+        'name'  => 'Line bot API',
+        'author'    => 'enggar tivandi',
+        'github'    => 'https://github.com/nekoding/lumen-line'
+    );
+
+    return response()->json($response);
 });
 
 
