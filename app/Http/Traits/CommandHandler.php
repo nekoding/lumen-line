@@ -12,7 +12,10 @@ trait CommandHandler
 
     public function __call($method, $args)
     {
-        return 'command not found';
+        return array(
+            'status'   => false,
+            'message' => 'Command not available'
+        );
     }
 
     public function articles($params)
@@ -21,7 +24,10 @@ trait CommandHandler
 
         $response = Api::get("https://dev.to/search/feed_content?per_page=5&page=$page&sort_by=published_at&sort_direction=desc&approved=&class_name=Article");
 
-        return (string) $response;
+        return array(
+            'status'    => true,
+            'data'      => json_decode($response)
+        );
     }
 
     public function podcasts($params)
@@ -29,14 +35,5 @@ trait CommandHandler
         $page = $params ?? $this->defaultPage;
 
         return $page;
-    }
-
-    public function tags($params)
-    {
-        if (is_null($params)) {
-            return 'params cannot be null';
-        }
-
-        return $params;
     }
 }
