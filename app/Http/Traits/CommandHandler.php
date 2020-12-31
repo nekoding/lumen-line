@@ -12,9 +12,13 @@ trait CommandHandler
 
     public function __call($method, $args)
     {
+
+        $message = "Maaf perintah yang kamu kirimkan tidak tersedia";
+        $message .= "\n Jika kesulitan menggunakan bot ini ketik help untuk menampilkan pesan bantuan";
+
         return array(
             'status'   => false,
-            'message' => 'Command not available'
+            'message' => $message
         );
     }
 
@@ -39,6 +43,14 @@ trait CommandHandler
         return array(
             'status'    => true,
             'data'      => json_decode($response)
+        );
+    }
+
+    public function help()
+    {
+        return array(
+            'status'    => true,
+            'data'      => null
         );
     }
 }
