@@ -37,6 +37,9 @@ class LineWebhookController extends Controller
             case 'podcasts':
                 $message = Podcasts::setMessage($responseApi['data'])->get();
                 break;
+            case 'help':
+                exit();
+                break;
             default:
                 abort(Response::HTTP_BAD_REQUEST);
                 break;
