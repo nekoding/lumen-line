@@ -17,7 +17,7 @@ help            = Menampilkan pesan bantuan
 
 ## Penggunaan
 1. Silahkan tambahkan akun dari bot ini sebagai teman : [@873pbazo](https://lin.ee/bGXyJad) atau bisa juga dengan scan QR code dibawah  
-![https://qr-official.line.me/sid/L/873pbazo.png](https://qr-official.line.me/sid/L/873pbazo.png)
+![screenshoot/873pbazo.png](screenshoot/873pbazo.png)
 
 2. Jika sudah silahkan kirimkan pesan sesuai command yang tersedia.   
 contoh : 
