@@ -38,6 +38,7 @@
     "scripts": {
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ]
+        ],
+        "start": "php -S 127.0.0.1:8080 -t public"
     }
 }
