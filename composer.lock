@@ -1686,7 +1686,7 @@
                 "illuminate/console": "^8.0",
                 "illuminate/container": "^8.0",
                 "illuminate/contracts": "^8.0",
-                "illuminate/database": "^8.0",
+                "illuminate/database": "8.24.0",
                 "illuminate/filesystem": "^8.0",
                 "illuminate/pipeline": "^8.0",
                 "illuminate/support": "^8.0",
